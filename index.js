@@ -7,13 +7,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const field = require(path.join(__dirname+'/public/field/field.js'));
 const office = require(path.join(__dirname+'/public/office/office.js'));
 
-app.use(subdomain('field', field));
-app.use(subdomain('office', office));
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
-    var full_address = req.protocol + "://" + req.headers.host + req.originalUrl;
-    console.log("The Request Made To This Endpoint: "+full_address);
 });
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
@@ -34,5 +29,8 @@ app.get('/create-new-account', (req, res) => {
 app.get('*', (req, res, next) => {
     res.status(404).sendFile(path.join(__dirname+'/public/404.html'));
 });
+
+app.use(subdomain('field', field));
+app.use(subdomain('office', office));
 
 app.listen(port, () => console.log(`BMSBuddy listening at http://localhost:${port}`));
