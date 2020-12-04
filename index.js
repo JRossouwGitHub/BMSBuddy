@@ -13,7 +13,7 @@ app.use(subdomain('office', office));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
     var full_address = req.protocol + "://" + req.headers.host + req.originalUrl;
-    console.log(full_address);
+    console.log("The Request Made To This Endpoint: "+full_address);
 });
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
