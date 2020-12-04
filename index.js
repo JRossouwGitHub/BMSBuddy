@@ -7,8 +7,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const field = require(path.join(__dirname+'/public/field/field.js'));
 const office = require(path.join(__dirname+'/public/office/office.js'));
 
-app.use(subdomain('field', field));
-app.use(subdomain('office', office));
+app.use(subdomain('field.bms-buddy', field));
+app.use(subdomain('office.bms-buddy', office));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
