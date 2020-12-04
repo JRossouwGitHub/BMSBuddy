@@ -1,6 +1,5 @@
 const express = require('express');
 const subdomain = require('express-subdomain');
-const vhost = require('vhost');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 80;
@@ -8,8 +7,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const field = require(path.join(__dirname+'/public/field/field.js'));
 const office = require(path.join(__dirname+'/public/office/office.js'));
 
-app.use(vhost('field.valorantscrims.gg', field));
-app.use(vhost('office.valorantscrims.gg', office));
+app.use(subdomain('field', field));
+app.use(subdomain('office', office));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
