@@ -2,7 +2,7 @@ const express = require('express');
 const subdomain = require('express-subdomain');
 const app = express();
 const path = require('path');
-const port = process.env.port || 3000;
+const port = process.env.port || 80;
 app.use(express.static(path.join(__dirname, 'public')));
 const field = require(path.join(__dirname+'/public/field/field.js'));
 const office = require(path.join(__dirname+'/public/office/office.js'));
