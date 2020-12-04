@@ -12,6 +12,7 @@ app.use(subdomain('office', office));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
+    console.log(req.url);
 });
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
