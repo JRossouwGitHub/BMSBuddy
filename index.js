@@ -1,5 +1,6 @@
 const express = require('express');
 const subdomain = require('express-subdomain');
+const subdomainV = require('express-vhost');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 80;
@@ -9,6 +10,11 @@ const office = require(path.join(__dirname+'/public/office/office.js'));
 
 app.use(subdomain('field', field));
 app.use(subdomain('office', office));
+
+subdomainV.register('field.valorantscrims.gg', field);
+subdomainV.register('office.valorantscrims.gg', office);
+
+app.use(subdomainV.vhost(app.enabled('trust proxy')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
