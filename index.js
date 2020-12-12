@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/create-new-account', require('./routes/api/account.js'));
+app.use('/create-new-account/step-1', require('./XERO/connect.js'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
@@ -23,7 +24,6 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
 });
-
 app.get('/index', (req, res) => {
     res.sendFile(path.join(__dirname+'/public/index.html'));
 });
@@ -37,7 +37,7 @@ app.get('/create-new-account', (req, res) => {
 });
 
 app.get('/redirect', (req, res) => {
-    res.sendFile(path.join(__dirname+'/public/step-2.html'));
+    res.redirect('/create-new-account/step-1/callback?code='+req.query.code+'&scope='+req.query.scope+'&session_state='+req.query.session_state);
 });
 
 app.get('*', (req, res, next) => {
