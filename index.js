@@ -37,7 +37,7 @@ app.get('/create-new-account', (req, res) => {
 });
 
 app.get('/redirect', (req, res) => {
-    res.sendFile(path.join(__dirname+'/public/index.html'));
+    res.sendFile(path.join(__dirname+'/public/step-2.html'));
 });
 
 app.get('*', (req, res, next) => {
