@@ -89,3 +89,25 @@ button:hover{
     font-size: 18px;
     text-align: center;
 }
+
+#createAccForm input{
+    width: 100%;
+    margin-bottom: 1%;
+    font-size: 18px;
+}
+
+#createAccForm button{
+    display: block;
+    font-size: 22px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 3%;
+    margin: 0 auto;
+}
+
+#submit:hover{
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
